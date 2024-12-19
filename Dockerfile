@@ -1,23 +1,13 @@
-# Use node image as base
-FROM node:18.18.2 AS development
+FROM node:lts-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+COPY package*.json /app/
+RUN npm install
 
-# Install dependencies
-RUN yarn
+COPY . /app
+RUN npm run build
 
-# Copy the rest of the application
-COPY . .
+EXPOSE 80
 
-# Build the app
-RUN yarn build
-
-# Expose port
-EXPOSE 3006
-
-# Start the React app
-CMD ["yarn", "start:dev"]
+CMD ["npm", "start", "--", "-p", "80"]
