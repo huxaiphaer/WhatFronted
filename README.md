@@ -9,7 +9,7 @@ A Next.js application featuring user authentication, product search, and real-ti
 - Sortable data tables
 - Persistent sessions
 - Responsive design
-- Protected API routes
+
 
 ## Tech Stack
 
