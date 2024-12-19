@@ -1,41 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore .idea directory (JetBrains IDE settings)
+.idea/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# testing
-/coverage
+# Ignore virtual environments
+venv/
+.env/
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# Ignore macOS system files
 .DS_Store
-*.pem
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# Ignore node_modules (if applicable)
+node_modules/
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Ignore logs
+*.log
