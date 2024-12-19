@@ -16,10 +16,10 @@ export const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await apiClient.post('/login', { email, password });
-      if (response.data.success) {
+      const response = await apiClient.post('/auth/login/', { email, password });
+      if (response.data.access) {
         dispatch(setUserEmail(email));
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.access);
         localStorage.setItem('userEmail', email);
       }
     } catch (error) {

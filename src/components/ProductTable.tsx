@@ -52,7 +52,7 @@ export const ProductTable = () => {
 
   const handleSelect = async (productId: number) => {
     try {
-      await apiClient.post('/products/select', { productId });
+      await apiClient.post(`/products/select/${productId}/`, {});
       dispatch(selectProduct(productId));
     } catch (error) {
       console.error('Failed to select product:', error);

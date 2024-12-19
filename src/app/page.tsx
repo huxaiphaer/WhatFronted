@@ -11,9 +11,11 @@ import { Button } from '@/components/ui/button';
 export default function Home() {
   const dispatch = useDispatch();
   const userEmail = useSelector((state: RootState) => state.products.userEmail);
+  console.log('userEmail:', userEmail)
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('userEmail');
+    console.log('savedEmail:', savedEmail)
     if (savedEmail) {
       dispatch(setUserEmail(savedEmail));
     }

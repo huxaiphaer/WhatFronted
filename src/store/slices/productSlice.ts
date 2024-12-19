@@ -24,12 +24,13 @@ const productSlice = createSlice({
       state.searchTerm = action.payload;
     },
     setUserEmail: (state, action: PayloadAction<string | null>) => {
+      console.log('action.payload', action.payload)
       state.userEmail = action.payload;
     },
     selectProduct: (state, action: PayloadAction<number>) => {
       const product = state.products.find(p => p.id === action.payload);
       if (product) {
-        product.selected = true;
+        product.selected = !product.selected;
       }
     },
   },

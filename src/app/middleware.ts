@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { jwtDecode } from 'jwt-decode';
 
 export async function middleware(request: NextRequest) {
-    if (request.nextUrl.pathname === '/api/login') {
+    if (request.nextUrl.pathname === '/api/v1/auth/login') {
         return NextResponse.next();
     }
 

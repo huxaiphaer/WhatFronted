@@ -38,12 +38,13 @@ const productSlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
             state.searchTerm = action.payload;
         },
         setUserEmail: (state, action)=>{
+            console.log('action.payload', action.payload);
             state.userEmail = action.payload;
         },
         selectProduct: (state, action)=>{
             const product = state.products.find((p)=>p.id === action.payload);
             if (product) {
-                product.selected = true;
+                product.selected = !product.selected;
             }
         }
     }
