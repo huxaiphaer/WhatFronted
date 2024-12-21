@@ -11,10 +11,12 @@ import apiClient from '@/lib/axios';
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await apiClient.post('/auth/login/', { email, password });
       if (response.data.access) {
@@ -24,6 +26,9 @@ export const LoginForm = () => {
       }
     } catch (error) {
       console.error('Login failed:', error);
+    }
+    finally {
+    setLoading(false);
     }
   };
 
@@ -48,9 +53,20 @@ export const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
           />
-          <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg">
-            Login
-          </Button>
+          <div className="relative w-full">
+            <Button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg disabled:opacity-50"
+                disabled={loading}
+            >
+              {loading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-blue-500 bg-opacity-70">
+                    <div className="loader border-t-2 border-white rounded-full w-6 h-6 animate-spin"></div>
+                  </div>
+              )}
+              Login
+            </Button>
+          </div>
         </form>
       </CardContent>
     </Card>
