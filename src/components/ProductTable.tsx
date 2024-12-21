@@ -39,7 +39,7 @@ export const ProductTable = () => {
         return;
       }
       try {
-        const response = await apiClient.get(`/products?search=${searchTerm}`);
+        const response = await apiClient.get(`/products/?search=${searchTerm}`);
         dispatch(setProducts(response.data));
       } catch (error) {
         console.error('Failed to fetch products:', error);
