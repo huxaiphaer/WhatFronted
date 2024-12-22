@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
       <div className="flex flex-col min-h-screen bg-gray-50 pb-8">
-        <Toaster  duration={5000}  />
+        <Toaster />
         {userEmail ? (
             <>
               <div className="px-8 py-4 flex justify-between items-center bg-amber-50 shadow mb-4">
