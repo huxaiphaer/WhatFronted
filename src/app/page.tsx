@@ -7,6 +7,7 @@ import { LoginForm } from '@/components/LoginForm';
 import { ProductTable } from '@/components/ProductTable';
 import { setUserEmail } from '@/store/slices/productSlice';
 import { Button } from '@/components/ui/button';
+import {Toaster} from "@/components/ui/toaster";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export default function Home() {
 
   return (
       <div className="flex flex-col min-h-screen bg-gray-50 pb-8">
+        <Toaster  duration={5000}  />
         {userEmail ? (
             <>
               <div className="px-8 py-4 flex justify-between items-center bg-amber-50 shadow mb-4">
@@ -47,7 +49,7 @@ export default function Home() {
                 </div>
               </div>
             </>
-        ) : <LoginForm/>}
+        ) : <LoginForm />}
       </div>
   );
 }
