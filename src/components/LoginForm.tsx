@@ -27,7 +27,6 @@ export const LoginForm = () => {
         toast({
           title: "Success",
           description: "Login successful! Welcome back.",
-          variant: "success",
           duration: 5000,
         });
       } else {
