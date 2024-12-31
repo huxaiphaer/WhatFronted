@@ -19,3 +19,7 @@ node_modules/
 
 # Ignore logs
 *.log
+
+# Next.js build output
+.next
+out
