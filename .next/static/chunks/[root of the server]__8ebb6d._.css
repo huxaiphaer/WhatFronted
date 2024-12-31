@@ -540,8 +540,12 @@ body {
   width: 100%;
 }
 
-.max-w-7xl {
-  max-width: 80rem;
+.min-w-\[800px\] {
+  min-width: 800px;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-md {
@@ -634,10 +638,6 @@ body {
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-x-auto {
-  overflow-x: auto;
 }
 
 .whitespace-nowrap {
