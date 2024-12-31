@@ -169,58 +169,59 @@ export const ProductTable = () => {
   })
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Search products..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="max-w-sm"
-        />
-      </div>
-      <div className="rounded-md border overflow-x-auto">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                      <TableHead key={header.id}>
-                        {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                            )}
-                      </TableHead>
-                  ))}
-                </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row) => (
-                    <TableRow
-                        key={row.id}
-                        data-state={row.getIsSelected() && "selected"}
-                    >
-                      {row.getVisibleCells().map((cell) => (
-                          <TableCell key={cell.id} className="text-center">
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          </TableCell>
+      <div className="flex flex-col space-y-4 w-full">
+        <div className="flex items-center py-4">
+          <Input
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full max-w-sm"
+          />
+        </div>
+        <div className="w-full overflow-auto rounded-md border">
+          <div className="min-w-[800px]">
+            <Table>
+              <TableHeader>
+                {table.getHeaderGroups().map((headerGroup) => (
+                    <TableRow key={headerGroup.id}>
+                      {headerGroup.headers.map((header) => (
+                          <TableHead key={header.id} className="whitespace-nowrap">
+                            {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                    header.column.columnDef.header,
+                                    header.getContext()
+                                )}
+                          </TableHead>
                       ))}
                     </TableRow>
-                ))
-            ) : (
-                <TableRow>
-                  <TableCell colSpan={columns.length} className="h-24 text-center">
-                    {!searchTerm ? 'Try searching for a product' :  'No products found'}
-                  </TableCell>
-                </TableRow>
-            )}
-          </TableBody>
-        </Table>
+                ))}
+              </TableHeader>
+              <TableBody>
+                {table.getRowModel().rows?.length ? (
+                    table.getRowModel().rows.map((row) => (
+                        <TableRow
+                            key={row.id}
+                            data-state={row.getIsSelected() && "selected"}
+                        >
+                          {row.getVisibleCells().map((cell) => (
+                              <TableCell key={cell.id} className="whitespace-nowrap">
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              </TableCell>
+                          ))}
+                        </TableRow>
+                    ))
+                ) : (
+                    <TableRow>
+                      <TableCell colSpan={columns.length} className="h-24 text-center">
+                        {!searchTerm ? 'Try searching for a product' : 'No products found'}
+                      </TableCell>
+                    </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
       </div>
-
-    </div>
   );
 };
